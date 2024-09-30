@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract Text from Image</title>
+</head>
+<body>
+    <h1>Extract Text from Image</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" id="imageUpload" name="image" />
+        <button type="button" onclick="extractText()">Extract Text</button>
+    </form>
+    <div id="uploadedImage"></div>
+    <div id="extractedText"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script>
+        function extractText() {
+            const fileInput = document.getElementById('imageUpload');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const extractedText = document.getElementById('extractedText');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    const image = new Image();
+                    image.src = event.target.result;
+                    image.style.maxWidth = '100%';
+                    uploadedImage.innerHTML = '';
+                    uploadedImage.appendChild(image);
+                    
+                    Tesseract.recognize(
+                        image.src,
+                        'eng',
+                        {
+                            logger: (m) => console.log(m)
+                        }
+                    ).then(({ data: { text } }) => {
+                        extractedText.innerHTML = `<h2>Extracted Text:</h2><p>${text}</p>`;
+                    }).catch(err => {
+                        console.error(err);
+                    });
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

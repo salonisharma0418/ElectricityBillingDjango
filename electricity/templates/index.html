@@ -1,0 +1,238 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+<html>
+
+<head>
+	<title>Electricity Billing - Index Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<br><br><br>
+
+<style>
+	body {
+		background: no-repeat;
+		background-size: cover;
+	}
+
+	.services {
+		text-align: center;
+		/* border: 4px solid red; */
+		margin-top: 19%;
+		max-width: 95%;
+		margin-left: 45px;
+		/* height: 100%; */
+		box-shadow: 0 4px 8px rgba(11, 11, 11, 0.1);
+		transition: transform 0.8s, box-shadow 0.8s;
+		border: 2px solid rgba(11, 11, 11, 0.1);
+	}
+
+	.services h1 {
+		margin-bottom: 20px;
+		font-family: 'Lobster', cursive;
+	}
+
+	.service-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		/* gap: 20px; */
+		max-width: 60%;
+		position: absolute;
+		margin-top: -37%;
+		margin-left: 27.5%;
+	}
+
+	.service-item {
+		/* background-color: #fff; */
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		padding: 20px;
+		flex: 1 1 calc(33.333% - 40px);
+		text-align: center;
+		transition: transform 0.3s, box-shadow 0.3s;
+		margin: 10px;
+	}
+
+	.service-item:hover {
+		transform: scale(1.05);
+		box-shadow: 0px 8px 24px rgba(248, 248, 248, 0.2);
+	}
+
+	.service-item img {
+		max-width: 55px;
+		margin-bottom: 20px;
+		transition: transform 0.3s;
+		margin-top: 15px;
+	}
+
+	.service-item:hover img {
+		transform: rotate(360deg);
+	}
+
+	.service-item h3 {
+		/* margin-bottom: 10px; */
+		font-size: 1.4em;
+		/* color: #333; */
+		color: #fff;
+		margin-top: -15px;
+	}
+
+	.service-item p {
+		color: #dedada;
+		/* color: white; */
+		font-size: 1em;
+		margin-bottom: 5px;
+	}
+
+	.info-container {
+		margin: auto;
+		text-align: left;
+		max-width: 400px;
+		padding: 10px;
+		/* background-color: rgba(255, 255, 255, 0.8); */
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(10px);
+		border: 2px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.service_content {
+		width: 80%;
+		margin-top: -105px;
+		margin-left: 150px;
+		text-align: center;
+		color: gray;
+		font-weight: bold;
+	}
+	.contact-page {
+		background-color: #fff;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		padding: 20px;
+		margin-bottom: 50px;
+		animation: fadeInUp 1s ease-in-out;
+	}
+
+	.contact-page h2 {
+		font-family: 'Lobster', cursive;
+		margin-bottom: 20px;
+	}
+
+	.contact-page form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.contact-page form input,
+	.contact-page form textarea,
+	.contact-page form button {
+		width: 100%;
+		padding: 10px;
+		border-radius: 8px;
+		border: 1px solid #ddd;
+		font-size: 1em;
+	}
+
+	.contact-page form button {
+		background-color: #006bb3;
+		color: #fff;
+		border: none;
+		cursor: pointer;
+	}
+
+
+</style>
+
+<body style="background-image: url('{% static 'images/11111.jpg' %}'); height: 100%; width: 100%;">
+	<br><br><br><br>
+	<div class="container mt-5">
+		<h1 class="text-center "></h1>
+		<div class="col-sm-8 m-auto d-block">
+			<div class="card" style="height: 200px;width: 500px;margin-left: 500px;">
+				<div class="card-body">
+					<form method="post">
+						{% csrf_token %}
+						<div class="form-group">
+							<label><b>Enter Your BP Number</b></label>
+							<input type="text" name="searchdata" class="form-control"
+								placeholder="BP Number" required>
+						</div><br>
+						<div class="form-group">
+							<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"
+								style="background-color: rgb(7, 5, 54) ;">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div
+			style=" height: 450px; width: 550px;margin-top: -320px;margin-left: -50px;  border: 2px solid  rgba(255,255,255, .2); box-shadow: 0 0 10px rgba(0,0,0, .2); backdrop-filter: blur(10px); border-radius: 10px; padding: 30px 40px;color: black;">
+			<img src="{% static 'images/photospot.png' %}" style="margin-top: -110px;margin-left: -150px;" />
+			<p style="height: 400px; width: 400px; margin-top: -300px;margin-left: 90px;font-size: 16px;">Online
+				electricity bill payment offers numerous benefits, including convenience, efficiency, and
+				security. It allows users to pay bills from home at any time, avoiding long queues and delays.
+				Instant processing helps prevent service disruptions and avoids late fees through timely reminders.
+				These platforms often provide detailed usage statistics, aiding in financial management and
+				promoting energy savings. Additionally, online payments reduce paper use, contributing to
+				environmental sustainability, and employ advanced security measures to protect personal information.
+				For utility providers, online payments reduce administrative costs and errors, enhancing overall
+				efficiency.</p>
+		</div>
+		<br><br><br>
+	</div>
+	<!-- Services Page -->
+	<div class="services">
+		<h1 class="heyservices" style="font-size: 50px;color: rgb(7, 5, 54);font-weight: 1000;margin-top:10px;">Our Services</h1>
+		<div style="height: 100%;width: 100%;">
+			<img src="{% static 'images/pic2div.jpg' %}" alt="cspdcl"
+				style="height: 80%;width: 90%;position: relative;">
+			<div class="service-items">
+				<div class="service-item">
+					<img src="{% static 'images/l3logo.png' %}" alt="Billing Calculation">
+					<h3>Billing Calculation</h3>
+					<p>Calculate the electricity consumption based on the captured data and applicable tariff rates.
+					</p>
+				</div>
+				<div class="service-item">
+					<img src="{% static 'images/l4logo.png' %}" alt="Payment Gateway">
+					<h3>Payment Gateway</h3>
+					<p>Secure and convenient payment options for your electricity bills.</p>
+				</div>
+				<div class="service-item">
+					<img src="{% static 'images/l5logo.png' %}" alt="Customer Support">
+					<h3>Customer Support</h3>
+					<p>24/7 customer support to assist you with any billing queries.</p>
+				</div>
+
+				<div class="service-item">
+					<img src="{% static 'images/l6logo.png' %}" alt="Feedback">
+					<h3>Feedback</h3>
+					<p>Provide feedback or report any discrepancies in your billing experience.</p>
+				</div>
+				<div class="service-item">
+					<img src="{% static 'images/l8logo.png' %}" alt="Reports">
+					<h3>Reports</h3>
+					<p>Generate reports to gain insights into your electricity consumption patterns.</p>
+				</div>
+				<div class="service-item">
+					<img src="{% static 'images/l7logo.png' %}" alt="Security">
+					<h3>Security</h3>
+					<p>Ensure the integrity and confidentiality of your data with our security measures.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="service_content">
+		<p>At Photospot Billing, we offer a comprehensive suite of billing solutions tailored specifically for
+			photographers. Our advanced billing software streamlines the entire billing process, from invoicing
+			to
+			payment tracking, ensuring that your financial management is both efficient and effective.
+			With our customizable invoice feature, you can create professional and personalized invoices that
+			reflect your brand identity.</p>
+	</div>
+
+</body>
+
+</html>
+{% include 'Footer.html' %}

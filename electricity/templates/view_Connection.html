@@ -1,0 +1,66 @@
+{% extends 'navbar1.html' %}
+{% load static %}
+{% block body1 %}
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		// Get the element with the data attribute
+		const connectionIdElement = document.getElementById("connection-id");
+		// Get the connection ID from the data attribute
+		const connectionId = parseInt(connectionIdElement.getAttribute("data-connectionid"));
+		// Add 50000 to the connection ID
+		const formattedId = (000000000 + connectionId).toString().padStart(9, '0');
+		// Set the formatted ID as the text content of the element
+		connectionIdElement.textContent = formattedId;
+	});
+</script>
+
+<body style="background-image: url({% static 'images/0403.jpg' %})">
+ <div class="card shadow mt-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 3px solid rgb(7, 5, 54);font-size: 22px;font-weight: 700;">View All Connection</h5>
+     <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+		<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
+			<thead style="background-color: white ;color:rgb(7, 5, 54)">
+				<tr>
+				    <th class="">Conn. Id</th>
+					<th class="">BPnumber</th>
+					<th class="">Conn. Type</th>
+					<th class="">Connection Start Date</th>
+					<th class="">Occupation</th>
+					<th class="">Load</th>
+					<th class="">Plot No.</th>
+					<th class="">City</th>
+					<th class="">Pincode</th>
+					<th class="">Address</th>
+					<th class="">State</th>
+					<th class="">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+             {% for i in connection %}
+			<tr>
+				<td>{{i.customer.id}}</td>
+				{% comment %} <td>{Number(00000+{{i.connectionid}})}</td> {% endcomment %}
+				{% comment %} <td id="connection-id" data-connectionid="{{ i.connectionid }}"></td> {% endcomment %}
+				<td>{{i.connectionid}}</td>
+				<td>{{i.connectiontype}}</td>
+				<td>{{i.connectionstartdate}}</td>
+				<td>{{i.occupation}}</td>
+				<td>{{i.connectionload}}</td>
+				<td>{{i.plotno}}</td>
+				<td>{{i.city}}</td>
+				<td>{{i.pincode}}</td>
+				<td>{{i.address}}</td>
+				<td>{{i.state}}</td>
+				<td><a href="{% url 'edit_Connection' i.connectionid %}" class="btn btn-primary"><i class="fas fa-edit"></i></a> |
+					<a href="{% url 'delete_Connection' i.connectionid %}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this Connection Details ?')"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+ </div>
+{% endblock %}

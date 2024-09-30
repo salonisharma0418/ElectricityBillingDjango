@@ -1,0 +1,58 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+
+{% if error == "no" %}
+<script>
+   alert('Logged In Successfully');
+   window.location = ('{% url "admin_home" %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+   alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="utf-8">
+   <title>Admin Login Form</title>
+   <!-- <link rel="stylesheet" href="{% static 'css/style1.css' %}"> -->
+</head>
+
+<body>
+   <div class="mybox" style="height: 80%;display: flex; align-items: center; justify-content: center;margin-left: 50%;">
+      <div class="wrapper">
+         <div class="title">
+            Admin Login
+         </div>
+         <form method="post">
+            {% csrf_token %}
+            <div class="field">
+               <input type="text" name="uname" required>
+               <label>Username</label>
+            </div>
+            <div class="field">
+               <input type="password" name="pwd" required>
+               <label>Password</label>
+            </div>
+
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+               <a href="{% url 'index' %}">Back to Home</a>
+            </div>
+      </div>
+      </form>
+   </div>
+   <div class="Myimage" style="display: flex;margin-top: -36.9%;height: 80%;width: 90%;margin-left:10%;">
+      <img src="{% static 'images/.gif' %}" />
+   </div>
+   </div>
+</body>
+
+</html>
+{% include 'Footer.html' %}

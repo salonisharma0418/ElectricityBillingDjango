@@ -1,0 +1,35 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+
+
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="utf-8">
+   <title>Registration</title>
+   <!-- <link rel="stylesheet" href="{% static 'css/style1.css' %}"> -->
+</head>
+
+<body>
+    <div class="registerbox" style="height: 80%;display: flex; align-items: center; justify-content: center;margin-left: 50%;">
+        <div class="pregi" style="width: 60%;background: #fff;border-radius: 15px;box-shadow: 0px 15px 20px rgba(0,0,0,0.1);height: 80%;">
+            <div class="regititle" style="font-size: 35px;font-weight: 600; text-align: center;line-height: 70px;color: #fff;user-select: none;border-radius: 15px 15px 0 0;background: linear-gradient(-135deg, #c850c0, #4158d0);">
+                Sign Up
+            </div>
+            <form action="{% url 'register' %}" method="POST" class="user">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Register" class="regisubt">
+            </form>
+            <hr>
+            <div class="stvts">
+                <div class="litlog" style="margin-left: 100px;">Already have an account?<a href="{% url 'admin_login' %}">Login!</a></div>
+            </div>
+            <div class="ristimge" style="display: flex;margin-top: -126.2%;margin-left:-165%;">
+                <img src="{% static 'images/.gif' %}" style="height: 45%;width: 48%;"/>
+            </div>
+        </div>
+       
+    </div>
+</body>
+{% include 'Footer.html' %}

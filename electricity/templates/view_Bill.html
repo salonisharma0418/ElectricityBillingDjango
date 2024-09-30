@@ -1,0 +1,49 @@
+{% extends 'navbar1.html' %}
+{% load static %}
+{% block body1 %}
+
+<body style="background-image: url('{% static 'images/0403.jpg' %}')">
+<div class="card shadow mt-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 3px solid rgb(7, 5, 54);font-size: 22px;font-weight: 700;">View All Bill</h5>
+      <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+
+		<table id="example" class="table table-striped table-bordered" style="width:100%">
+			<thead style="background-color: white ;color:rgb(7, 5, 54)">
+				<tr>
+					<th class="">Bill ID</th>
+					<th class="">BPnumber</th>
+					<th class="">Bill For Month</th>
+					<th class="">Current Reading</th>
+					<th class="">Previous Reading</th>
+					<th class="">Total Units</th>
+					{% comment %} <th class="text-primary">Charge Per Unit</th> {% endcomment %}
+					<th class="">Final Amount</th>
+					<th class="">Due_Date</th>
+					<th class="">Status</th>
+					<th class="">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+              {% for i in viewbill %}
+			  <tr>
+				  <td>{{forloop.counter}}</td>
+				  <td>{{i.bp_no}}</td>
+				  <td>{{i.billformonth}}</td>
+				  <td>{{i.currentreading}}</td>
+				  <td>{{i.previousreading}}</td>
+				  <td>{{i.totalunit}}</td>
+				  
+				  <td>{{i.final|floatformat:0}}</td>
+				  <td>{{i.duedate}}</td>
+				  <td>{{i.status}}</td>
+				  <td><a href="{% url 'delete_Bill' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this Connection Details ?')">Delete</a></td>
+			  </tr>
+			  {% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+</div>
+{% endblock %}

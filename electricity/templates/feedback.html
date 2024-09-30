@@ -1,0 +1,251 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photospot Billing Feedback</title>
+    <style>
+        .photospot-fdback-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 20px;
+            font-weight: 1000;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .photospot-fdback-intro {
+            text-align: center;
+            font-size: 1em;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .photospot-fdback-form {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .photospot-fdback-fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .photospot-fdback-legend {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .photospot-fdback-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .photospot-fdback-textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .photospot-fdback-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .photospot-fdback-button:hover {
+            background-color: #45a049;
+        }
+        .popup {
+            width: 400px;
+            background: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1);
+            text-align: center;
+            padding: 0 30px 30px;
+            color: #333;
+            visibility:hidden;
+            transitions:transform 0.4s, top 0.4s;
+        }
+        .open-Popus{
+            visibility:visible;
+            top:50%;
+            transform:translate(-50%,-50%) scale(1);
+        }
+        .popup img {
+            width: 100px;
+            margin-top: -50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .popup h2 {
+            font-size: 38px;
+            font-weight: 500;
+            margin: 30px 0 10px;
+        }
+        
+        .popup button {
+            width: 100%;
+            margin-top: 50px;
+            padding: 10px 0;
+            background: #6fd649;
+            color: #fff;
+            border: 0;
+            outline: none;
+            margin-left:0;
+            font-size:18px;
+            border-radius:4px;
+            cursor:pointer;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 class="photospot-fdback-title">We Value Your Feedback!</h1>
+    <p class="photospot-fdback-intro">Thank you for choosing Photospot Billing for your photography billing needs. We continuously strive to enhance our services and provide you with the best experience possible. Your feedback is invaluable to us. Please take a moment to share your thoughts and suggestions.</p>
+    
+    <form class="photospot-fdback-form" action="/submit_feedback/" method="post">
+        {% csrf_token %}
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Overall Satisfaction</legend>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="satisfaction" value="Very Satisfied"> Very Satisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="satisfaction" value="Satisfied"> Satisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="satisfaction" value="Neutral"> Neutral
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="satisfaction" value="Dissatisfied"> Dissatisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="satisfaction" value="Very Dissatisfied"> Very Dissatisfied
+            </label>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Ease of Use</legend>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="ease_of_use" value="Very Easy"> Very Easy
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="ease_of_use" value="Easy"> Easy
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="ease_of_use" value="Neutral"> Neutral
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="ease_of_use" value="Difficult"> Difficult
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="ease_of_use" value="Very Difficult"> Very Difficult
+            </label>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Features and Functionality</legend>
+            <label class="photospot-fdback-label" for="features_like">Are there any features you particularly like or dislike?</label><br>
+            <textarea class="photospot-fdback-textarea" id="features_like" name="features_like" rows="4" cols="50"></textarea><br>
+            <label class="photospot-fdback-label" for="additional_features">What additional features would you like to see?</label><br>
+            <textarea class="photospot-fdback-textarea" id="additional_features" name="additional_features" rows="4" cols="50"></textarea>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Customer Support</legend>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="customer_support" value="Excellent"> Excellent
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="customer_support" value="Good"> Good
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="customer_support" value="Average"> Average
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="customer_support" value="Poor"> Poor
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="customer_support" value="Very Poor"> Very Poor
+            </label>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Billing and Payment Process</legend>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="billing_process" value="Very Satisfied"> Very Satisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="billing_process" value="Satisfied"> Satisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="billing_process" value="Neutral"> Neutral
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="billing_process" value="Dissatisfied"> Dissatisfied
+            </label><br>
+            <label class="photospot-fdback-label">
+                <input type="radio" name="billing_process" value="Very Dissatisfied"> Very Dissatisfied
+            </label>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Suggestions for Improvement</legend>
+            <label class="photospot-fdback-label" for="improvement_suggestions">Do you have any suggestions for how we can improve our services?</label><br>
+            <textarea class="photospot-fdback-textarea" id="improvement_suggestions" name="improvement_suggestions" rows="4" cols="50"></textarea>
+        </fieldset>
+
+        <fieldset class="photospot-fdback-fieldset">
+            <legend class="photospot-fdback-legend">Additional Comments</legend>
+            <label class="photospot-fdback-label" for="additional_comments">Any other comments or feedback you would like to share?</label><br>
+            <textarea class="photospot-fdback-textarea" id="additional_comments" name="additional_comments" rows="4" cols="50"></textarea>
+        </fieldset>
+
+        <button class="photospot-fdback-button" type="submit" onclick="openpopup()">Submit Feedback</button>
+       <div class="popup" id="popup">
+        <img src="{% static 'images/tick.png' %}">
+        <h2>Thank You!</h2>
+        <p>Your Deatils has been successfully Submitted. Thanks!</p>
+        <button type="button" onclick="closePopup()">OK</button>
+       </div>
+
+<script>
+let popup = document.getElementById("popup");
+
+Function openPopup(){
+    popup.classList.add("open-popup");
+}
+
+Function closePopup(){
+    popup.classList.remove("open-popup");
+}
+</script>
+
+    </form>
+</body>
+</html>
+{% include 'Footer.html' %}

@@ -1,0 +1,211 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Photospot Billing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .helpcenter_maindiv {
+            max-width: 70%;
+            margin: 0 auto;
+            /* margin-top: 50px; */
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .helptitle {
+           text-align: center; 
+            color: rgb(7, 5, 54);
+            font-size: 35px;
+            font-weight: 1000;
+            margin-top: 50px;
+
+        }
+
+        .helpsubtitle {
+            border-bottom: 2px solid rgb(7, 5, 54);
+            padding-bottom: 5px;
+            font-size: 25px;
+            font-weight: 800;
+        }
+        .helpdesign .centersubtitle {
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid rgb(7, 5, 54);
+        }
+
+        .helpdesign h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .helpdesign p {
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+
+        .helpcontactinfo {
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+
+        .help-center-billing .centersubtitle {
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid rgb(7, 5, 54);
+        }
+        .help-center-billing h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .help-center-billing p {
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+
+
+        .help-center-technical .centersubtitle {
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid rgb(7, 5, 54);
+        }
+        .help-center-technical h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .help-center-technical p {
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+        .help-center-resources .centersubtitle {
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid rgb(7, 5, 54);
+        }
+        .help-center-resources ul{
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+
+        .help-center-contact .centersubtitle {
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid rgb(7, 5, 54);
+        }
+        .help-center-contact h2{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .help-center-contact p{
+            font-size: 15px;
+            font-weight: bold;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="helptitle">Help Center</h1>
+    <div class="helpcenter_maindiv">
+
+        <h2 class="helpsubtitle">How can we assist you today?</h2>
+        <p>Welcome to the Photospot Billing Help Center! We're here to provide you with the support you need to make the
+            most of our services. Below you'll find answers to common questions and guidance on how to get help.</p>
+
+        <div class="helpdesign">
+            <h2 class="centersubtitle">Frequently Asked Questions (FAQs)</h2>
+
+            <h3>1. How do I create an account?</h3>
+            <p>To create an account, click on the "Sign Up" button on the top right corner of the homepage. Fill in your
+                details and follow the instructions to complete the registration process.</p>
+
+            <h3>2. How do I reset my password?</h3>
+            <p>If you've forgotten your password, click on the "Forgot Password" link on the login page. Enter your
+                registered email address, and we'll send you instructions on how to reset your password.</p>
+
+            <h3>3. How do I view my billing history?</h3>
+            <p>To view your billing history, log in to your account and navigate to the "Billing" section. Here you will
+                find detailed records of all your transactions.</p>
+
+            <h3>4. How do I update my payment information?</h3>
+            <p>To update your payment information, log in to your account, go to the "Account Settings" section, and
+                select "Payment Information." From there, you can update your credit card or other payment details.</p>
+
+            <h3>5. How do I contact customer support?</h3>
+            <p>If you need further assistance, you can reach our customer support team by:</p>
+            <ul class="helpcontactinfo">
+                <li>Email: <a href="mailto:support@photospot.com">support@photospot.com</a></li>
+                <li>Phone: 1-800-123-4567</li>
+                <li>Live Chat: Available on our website during business hours.</li>
+            </ul>
+        </div>
+
+        <div class="help-center-billing">
+            <h2 class="centersubtitle">Billing & Payments</h2>
+
+            <h3>1. What payment methods do you accept?</h3>
+            <p>We accept major credit cards, PayPal, and bank transfers. For more details, visit the "Payment Methods"
+                section on our website.</p>
+
+            <h3>2. How do I download my invoice?</h3>
+            <p>To download your invoice, log in to your account, go to the "Billing" section, and click on the invoice
+                you want to download. There will be an option to download or print it.</p>
+
+            <h3>3. Why was my payment declined?</h3>
+            <p>There could be several reasons for a payment decline, including insufficient funds, incorrect payment
+                details, or issues with your bank. Please check your payment information and try again. If the problem
+                persists, contact our customer support for assistance.</p>
+        </div>
+
+        <div class="help-center-technical">
+            <h2 class="centersubtitle">Technical Support</h2>
+
+            <h3>1. I am experiencing technical issues. What should I do?</h3>
+            <p>First, try clearing your browser's cache and cookies and restarting your browser. If the issue persists,
+                check our <a href="#">Status Page</a> for any ongoing outages. For further help, contact our technical
+                support team.</p>
+
+            <h3>2. How do I report a bug?</h3>
+            <p>To report a bug, please send a detailed description of the issue, along with any screenshots or error
+                messages, to <a href="mailto:support@photospot.com">support@photospot.com</a>. Our technical team will
+                investigate and address the problem as quickly as possible.</p>
+        </div>
+
+        <div class="help-center-resources">
+            <h2 class="centersubtitle">Additional Resources</h2>
+            <ul>
+                <li><a href="#">User Guides</a>: Visit our User Guides section for detailed instructions on using our
+                    services.</li>
+                <li><a href="#">Video Tutorials</a>: Check out our Video Tutorials for step-by-step visual guides.</li>
+                <li><a href="#">Community Forum</a>: Join our Community Forum to ask questions, share tips, and connect
+                    with other users.</li>
+            </ul>
+        </div>
+
+        <div class="help-center-contact">
+            <h2 class="centersubtitle">Still Need Help?</h2>
+            <p>If you couldn't find the answer to your question here, please don't hesitate to contact us. We're
+                committed to providing you with the best support possible.</p>
+        </div>
+    </div>
+</body>
+
+</html>
+{% include 'Footer.html' %}

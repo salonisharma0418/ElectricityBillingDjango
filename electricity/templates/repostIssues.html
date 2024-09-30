@@ -1,0 +1,174 @@
+{% include 'usernavbar.html' %}
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue/Bug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .issuecontainer {
+            max-width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .issuecontainer h1 {
+            color: #333;
+            font-size: 40px;
+            text-align: center;
+            font-weight: 1000;
+        }
+
+        .issuecontainer h2 {
+            color: #333;
+            font-size: 25px;
+        }
+
+        .report_container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 98%;
+        }
+
+        .report_container label {
+            font-weight: bold;
+        }
+
+        .report_container input,
+        textarea,
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+
+        .report_container textarea {
+            resize: vertical;
+        }
+
+        .report_container button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            width: 95%;
+            margin-left: 40px;
+        }
+
+        .report_container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="issuecontainer">
+        <h1>Report an Issue/Bug</h1>
+        <p>At Photospot Billing, we strive to provide a seamless experience for all our users. However, we understand
+            that sometimes issues or bugs may arise. Your feedback is crucial in helping us improve our services. If you
+            encounter any issues or bugs while using our website or services, please report them using the form below.
+        </p>
+
+        <h2>How to Report an Issue/Bug</h2>
+        <p>To help us address your issue as quickly as possible, please provide the following information:</p>
+
+        <ol>
+            <li><strong>Your Contact Information:</strong>
+                <ul>
+                    <li>Name</li>
+                    <li>Email Address</li>
+                    <li>Phone Number (optional)</li>
+                </ul>
+            </li>
+            <li><strong>Issue Details:</strong>
+                <ul>
+                    <li>Describe the issue or bug in detail.</li>
+                    <li>Provide steps to reproduce the issue, if possible.</li>
+                    <li>Include any error messages you received.</li>
+                    <li>Mention the date and time when the issue occurred.</li>
+                </ul>
+            </li>
+            <li><strong>Technical Information:</strong>
+                <ul>
+                    <li>Browser type and version</li>
+                    <li>Operating system</li>
+                    <li>Device type (e.g., desktop, mobile, tablet)</li>
+                </ul>
+            </li>
+            <li><strong>Screenshots/Attachments:</strong>
+                <ul>
+                    <li>If applicable, please attach screenshots or any other files that can help us understand the
+                        issue better.</li>
+                </ul>
+            </li>
+        </ol>
+        <h2>Steps to Reproduce:</h2>
+        <ol>
+            <li>Log in to your account.</li>
+            <li>Go to the "Make a Payment" page.</li>
+            <li>Enter payment details.</li>
+            <li>Click on "Proceed to Confirmation."</li>
+        </ol>
+
+        <h2>Report Form</h2>
+        <div class="report_container">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="number" id="phone" name="phone" placeholder="phone number">
+
+                <label for="issueDescription">Issue Description:</label>
+                <textarea id="issueDescription" name="issueDescription" rows="5"
+                    placeholder="Describe the issue/bug here. Please provide as much detail as possible."
+                    required></textarea>
+
+                <label for="stepsToReproduce">Steps to Reproduce:</label>
+                <textarea id="stepsToReproduce" name="stepsToReproduce" rows="3"
+                    placeholder="1. Step 1&#10;2. Step 2&#10;3. Step 3" required></textarea>
+
+                <label for="errorMessages">Error Messages:</label>
+                <input type="text" id="errorMessages" name="errorMessages"
+                    placeholder="Include any error messages you received here.">
+
+                <label for="dateTime">Date and Time:</label>
+                <input type="datetime-local" id="dateTime" name="dateTime" required>
+
+                <label for="browserInfo">Browser Information:</label>
+                <input type="text" id="browserInfo" name="browserInfo" placeholder="Browser type and version" required>
+
+                <label for="os">Operating System:</label>
+                <input type="text" id="os" name="os" placeholder="Operating system" required>
+
+                <label for="deviceInfo">Device Information:</label>
+                <input type="text" id="deviceInfo" name="deviceInfo" placeholder="Device type" required>
+
+                <label for="attachments">Attachments:</label>
+                <input type="file" id="attachments" name="attachments" multiple>
+
+                <button class="reportbutton" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% include 'Footer.html' %}

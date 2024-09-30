@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Template</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3.bill_head_heading, h4 {
+            color: #ffff;
+            margin-left: 3%;
+            font-weight: bold;
+        }
+
+        .bill_head_div {
+            margin-left: 3%;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bill_head_div span {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        table.dataTable {
+            width: 70%;
+            margin-left: 15%;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table.dataTable thead {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+        table.dataTable thead th {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table.dataTable tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        table.dataTable tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .text-center.text-danger {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .fadeInUp {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .header {
+            background: linear-gradient(90deg, rgb(7, 5, 54) 0%, #00f2fe 100%);
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            
+        }
+
+        th {
+
+            color: white;
+            background-color:rgb(7, 5, 54);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .total {
+            font-weight: bold;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div class="header animate__animated animate__fadeInDown">
+        <h3 class="psalinfo" style="font-size:30px;font-weight:1000">Personal Information</h3>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="bill_head_div">
+            <span>BPnumber: {{bill.connection.connectionid}}</span>
+            <span>Bill for Month: {{bill.billformonth}}</span>
+            <span>Customer Name: {{bill.connection.customer.user.first_name}}</span>
+            <span>Load: {{bill.connection.connectionload}}</span>
+            <span>Address: {{bill.connection.address}}</span>
+            <span>Mobile No.: {{bill.connection.customer.contact}}</span>
+            <span>Total Units: {{bill.totalunit}}</span>
+            <span>Due date: {{bill.duedate}}</span>
+        </div>
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>View Bill Details</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <h4>Unit Charges</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Units</th>
+                        <th>Rate</th>
+                        <th>Rate Details</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for i in bill_data %}
+                    <tr>
+                        <td>{{i.rate}}</td>
+                        <td>{{i.unit}}</td>
+                        <td>{{i.rate_details}}</td>
+                        <td>{{i.amount}}</td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <span class="total">Total: {{bill.total_bill_amt}}</span>
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>Fixed Charges</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Load</th>
+                        <th>Rate</th>
+                        <th>Rate Details</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for item in bill_load %}
+                    <tr>
+                        <td>{{item.load}}</td>
+                        <td>{{item.load_rate}}</td>
+                        <td>{{item.load_rate_details}}</td>
+                        <td>{{item.load_amount}}</td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        {% for item in bill_load %}
+        <span class="total">Total: {{item.load_amount}}</span><br>
+        {% endfor %}
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>FPPAS</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Previous Reading</th>
+                        <th>Rate</th>
+                        <th>Rate Details</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for items in bill_fppas %}
+                    <tr>
+                        <td>{{pre_bill.total_bill_amt}}</td>
+                        <td>9.1</td>
+                        <td>{{items.fppas_rate_details}}</td>
+                        <td>{{amou_data}}</td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <span class="total">Total: {{amou_data}}</span>
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>CESS</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Rate</th>
+                        <th>Rate Details</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for it in bill_cess %}
+                    <tr>
+                        <td>{{it.cess}}</td>
+                        <td>{{it.cess_rate}}</td>
+                        <td>{{it.cess_rate_details}}</td>
+                        <td>{{it.cess_amount}}</td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        {% for it in bill_cess %}
+        <span class="total">Total: {{it.cess_amount}}</span><br>
+        {% endfor %}
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>Duty</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>add_Bill</th>
+                        <th>Rate</th>
+                        <th>Rate Details</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>{{duty_amo}}</td>
+                        <td>11</td>
+                        <td>{{"%"}}</td>
+                        <td>{{per_amo_duty}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <span class="total">Total: {{per_amo_duty|floatformat:0}}</span>
+    </div>
+    <div class="header animate__animated animate__fadeInDown">
+        <h4>Bill Calculation Details</h4>
+    </div>
+    <div class="content animate__animated animate__fadeInUp">
+        <div class="bill_head_div">
+            <span>Unit Charge: {{bill.total_bill_amt}}</span>
+            {% for item in bill_load %}
+            <span>Fixed Charges: {{item.load_amount}}</span>
+            {% endfor %}
+            <span>FPPAS: {{amou_data}}</span>
+            {% for it in bill_cess %}
+            <span>CESS: {{it.cess_amount}}</span>
+            {% endfor %}
+            <span>Duty Charges: {{per_amo_duty|floatformat:0}}</span>
+            <span>Govt. Yojna Benefits (Cut in 50%): -{{govt_amount}}</span>
+            <span>Other Charges: -{{other_cha}}</span>
+            <span>Final: {{final|floatformat:0}}</span>
+        </div>
+    </div>
+</body>
+</html>
